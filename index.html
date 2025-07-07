@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Timely.com</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e0e7ff 0%, #fff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glassy-hero {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.10);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            padding: 3rem 2rem 2.5rem 2rem;
+        }
+
+        .glassy-hero .display-1 {
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #1e293b;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .glassy-hero .lead {
+            color: #64748b;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            transition: all 0.2s;
+        }
+
+        .footer {
+            margin-top: auto;
+        }
+
+        @media (max-width: 576px) {
+            .glassy-hero {
+                padding: 2rem 1rem 1.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container-fluid mx-4">
+            <a class="navbar-brand fw-bold" href="/">Timely.com</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li> -->
+                </ul>
+                <form class="d-flex" role="search">
+                    <select class="form-select me-4" aria-label="Search time zones">
+                        <option selected disabled>Search time zones...</option>
+                        <option value="Asia/Kolkata" >India (IST)</option>
+                        <option value="America/New_York">USA (EST)</option>
+                        <option value="urope/London">UK (GMT)</option>
+                        <option value="Asia/Tokyo">Japan (JST)</option>
+                        <option value="Australia/Sydney">Australia (AEST)</option>
+                        <option value="Europe/Berlin">Germany (CET)</option>
+                        <option value="Asia/Dubai">UAE (GST)</option>
+                    </select>
+                    <button class="btn btn-outline-light" type="button" id="showBtn">Show</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section: India's Time -->
+    <section class="container glassy-hero text-center">
+        <div class="mb-3">
+            <span class="badge rounded-pill bg-primary fs-6 px-3 py-2 mb-2 shadow-sm">Current Time in <span id="country">India</span></span>
+            <h1 class="display-1 mb-2" id="time">12:34:56</h1>
+            <div class="lead mb-2" id="timeStandard">Indian Standard Time (IST)</div>
+            <div class="text-secondary small" id="timeZone">Asia/Kolkata</div>
+        </div>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-8">
+                <p class="fs-5 text-secondary mb-0">
+                    Alarm set for 6:00 AM tomorrow.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alarm Feature -->
+    <div class="container mb-5">
+        <div class="text-start mb-4">
+            <h4 class="mb-3 text-primary">Set an Alarm (IST)</h4>
+            <form class="row g-3">
+                <div class="col-4">
+                    <input type="time" class="form-control" required>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-primary w-100">Set Alarm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Other Countries' Times -->
+    <div class="container mb-5">
+        <h4 class="mb-3 text-dark">Time in other countries</h4>
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center g-4">
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-0 h-100 card-hover">
+                    <div class="card-header py-3 bg-light">
+                        <h4 class="my-0 fw-normal">USA (EST)</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="display-6 fw-bold" style="letter-spacing:1px;" id="americalTime" >03:04:56</div>
+                        <div class="text-secondary">America/New_York</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-0 h-100 card-hover">
+                    <div class="card-header py-3 bg-light">
+                        <h4 class="my-0 fw-normal">UK (GMT)</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="display-6 fw-bold" style="letter-spacing:1px;" id="ukTime">08:04:56</div>
+                        <div class="text-secondary">Europe/London</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card mb-4 rounded-4 shadow-sm border-0 h-100 card-hover">
+                    <div class="card-header py-3 bg-light">
+                        <h4 class="my-0 fw-normal">Japan (JST)</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="display-6 fw-bold" style="letter-spacing:1px;" id="japanTime">17:34:56</div>
+                        <div class="text-secondary">Asia/Tokyo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="footer bg-light text-center text-secondary py-3 shadow-sm">
+        &copy; 2025 Timely.com. All rights reserved.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
